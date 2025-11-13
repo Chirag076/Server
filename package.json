@@ -1,5 +1,10 @@
 {
-  "type": "module",
+  "name": "server",
+  "version": "1.0.0",
+  "type": "module",              
+  "scripts": {
+    "start": "node Server.js"
+  },
   "dependencies": {
     "express": "^5.1.0"
   }
