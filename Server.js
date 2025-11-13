@@ -1,6 +1,7 @@
 import express from "express";   
+import cors from "cors";
 const app = express();
-
+app.use(cors());
 app.get("/", (req, res) => res.send("Server is running"));
 app.get("/add", (req, res) => {
   const a = parseInt(req.query.a) || 0;
