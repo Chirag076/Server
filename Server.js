@@ -7,19 +7,21 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 const app = express();
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI1 = process.env.MONGO_URI1;
+const MONGO_URI2 = process.env.MONGO_URI2;
 const JWT_SECRET = process.env.JWT_SECRET;
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
 
-mongoose
-  .connect(MONGO_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log("MongoDB Error:", err));
+const TestDb = mongoose.createConnection(MONGO_URI1);
+const MainDb = mongoose.createConnection(MONGO_URI2);
 
-const Users = mongoose.model(
+TestDb.on("connected", () => console.log("TestDb connected"));
+MainDb.on("connected", () => console.log("MainDb connected"));
+
+const Users = TestDb.model(
   "users",
   new mongoose.Schema({
     name: String,
