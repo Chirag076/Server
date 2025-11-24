@@ -16,9 +16,10 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/auth", authRoutes);
-app.use("/profile", profileRoutes);
-app.use("/math", mathRoutes);
+app.use("/test/api/v1/auth", authRoutes(TestDb));
+app.use("/server/api/v1/auth", authRoutes(MainDb));
+app.use("/api/v1/users", profileRoutes);
+app.use("/api/v1/math", mathRoutes);
 
 // Health check
 app.get("/", (req, res) => res.send("Server is running"));

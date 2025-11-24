@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { TestDb } from "../config/db.js";
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -7,8 +6,12 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-export const Users = TestDb.model("users", userSchema);
+// Create a function to get a model on a given DB connection
+export function getUserModel(db) {
+  return db.model("users", userSchema);
+}
 
-export function userExists(email) {
-  return Users.findOne({ email });
+// Helper to check if user exists on a given model
+export async function userExists(email, UserModel) {
+  return UserModel.findOne({ email });
 }
