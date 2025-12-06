@@ -6,7 +6,6 @@ import { getAccountModel } from "../models/AccountSchema.js";
 import {
   signUpSchema,
   logInSchema,
-  updateUserSchema,
 } from "../validations/userValidation.js";
 import { authMiddleware } from "../middleware/auth.js";
 import { PaytmDb } from "../config/db.js";
