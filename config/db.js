@@ -5,9 +5,12 @@ dotenv.config();
 
 const MONGO_URI1 = process.env.MONGO_URI1;
 const MONGO_URI2 = process.env.MONGO_URI2;
+const MONGO_URI3 = process.env.MONGO_URI3;
 
 export const TestDb = mongoose.createConnection(MONGO_URI1);
 export const MainDb = mongoose.createConnection(MONGO_URI2);
+export const PaytmDb = mongoose.createConnection(MONGO_URI3);
 
+PaytmDb.on("connected", () => console.log("PaytmDb connected"));
 TestDb.on("connected", () => console.log("TestDb connected"));
 MainDb.on("connected", () => console.log("MainDb connected"));

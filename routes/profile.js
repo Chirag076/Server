@@ -1,11 +1,11 @@
-import express from "express";
-import { authMiddleware } from "../middleware/auth.js";
+// import express from "express";
+// import { authMiddleware } from "../middleware/auth.js";
 
-const router = express.Router();
+// const router = express.Router();
 
-router.get("/", authMiddleware, (req, res) => {
-  const { name, email } = req.user;
-  res.json({ message: `Welcome, ${name} 🎉`, name, email });
-});
+// router.get("/", authMiddleware, (req, res) => {
+//   const { name, email } = req.user;
+//   res.json({ message: `Welcome, ${name} 🎉`, name, email });
+// });
 
-export default router;
+// export default router;
